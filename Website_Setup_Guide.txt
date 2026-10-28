@@ -1,0 +1,131 @@
+# Montana Sky — Static Website & PonoRez EZ-Forms Setup
+
+## Package
+
+- `public/index.html`: entire one-page site (HTML + CSS + JS in one file)
+- `public/assets/montana-sky-logo.webp` / `.png`: cropped user-provided logo
+- `public/assets/favicon.svg`: compact balloon-style browser icon
+- `PRELAUNCH-CHECKLIST.md`: final operator approval items
+- `SINGLE-FILE-OPTION.html`: self-contained one-file alternative (logo embedded); for App Platform we recommend the `public/` version for normal caching
+
+No WordPress, database, payment gateway script, or external JavaScript framework is necessary. PonoRez handles online booking and payments.
+
+## A. Set up PonoRez products
+
+Suggested model (confirm product and inventory behavior with the PonoRez supplier configuration):
+
+| Departure | Type | Price | Capacity / restrictions |
+|---|---|---|---|
+| Morning | Shared | $299 per seat | 4–10 TOTAL confirmed passengers to operate; individual orders can be 1+ |
+| Sunset | Shared | $299 per seat | 4–10 TOTAL confirmed passengers to operate; individual orders can be 1+ |
+| Morning | Private | 1–5: $2,000; 6–8: $3,100; 9–10: $3,700 per entire private booking | 1–10 guests, block shared inventory for the same balloon/departure |
+| Sunset | Private | same private tiers | same |
+
+**VERY IMPORTANT:** Shared 4-person minimum is a DEPARTURE minimum, not necessarily a minimum booking quantity. Confirm the rule and whether PonoRez can enforce it automatically; otherwise use an operational review/reconfirmation process. Never oversell when shared/private flights draw on the same balloon.
+
+For private charters, if your PonoRez configuration cannot use one private product with quantity-dependent group prices, create three private products/forms per flight time (1–5, 6–8, 9–10). The website supports either approach.
+
+Each PonoRez booking form should present correct capacity, guest count, availability, price, payment details, confirmed cancellation/weather rules, and waivers if enabled. Verify confirmation emails and passenger manifests before launch.
+
+## B. Connect PonoRez EZ-Forms links
+
+Open `public/index.html` in a text editor and search for **`const BOOKING_URLS`** near the bottom.
+
+Paste the complete final HTTPS URL into each corresponding value, retaining quotation marks, e.g.:
+
+`morningShared: "https://ez-forms.ponorez.com/PUT-YOUR-ACTUAL-MORNING-SHARED-URL-HERE"`
+
+The example is **not a real booking link**. Replace it with the direct URL of Montana Sky's actual form. The site does **not** use the sister company's URLs.
+
+Required base links:
+
+- `morningShared`
+- `sunsetShared`
+- `morningPrivate`
+- `sunsetPrivate`
+
+Optional private tier overrides (if separate private forms are needed):
+
+- `morningPrivate1to5`, `morningPrivate6to8`, `morningPrivate9to10`
+- `sunsetPrivate1to5`, `sunsetPrivate6to8`, `sunsetPrivate9to10`
+
+If a tier-specific URL is present, the site uses it; otherwise it falls back to the shared private link for that time. Verify the matching form imposes the correct tier and price. A link merely selects the right form; it does not force a specific price in PonoRez.
+
+**Note:** The fare selector estimates the total locally but does not send guest quantity or date to EZ-Forms; the customer must confirm those in PonoRez checkout. Until you enter valid HTTPS URLs, the Reserve button intentionally does not send users to a nonexistent checkout. Instead it displays a setup reminder.
+
+## C. Set contact details
+
+In the same `index.html`, look for `const BUSINESS_CONTACT` and enter the *actual* Montana Sky email and phone. Until provided, the site shows a contact-details placeholder. Replace the copy about meeting instructions once you know the Montana service area, departure location, and process.
+
+## D. Easy deployment — DigitalOcean App Platform (recommended)
+
+1. Create a new GitHub repository, e.g. `montana-sky-website` (or use GitLab / Bitbucket).
+2. Upload the CONTENTS of this package including `public/index.html` and `public/assets/` into the repository. You can do this through GitHub's web upload interface.
+3. Sign in to `https://cloud.digitalocean.com/apps` and choose **Create App**.
+4. Connect/select the repository and `main` branch.
+5. For the detected component, choose **Static Site** (not a Node web service). Confirm that the output folder is `public` (App Platform scans this name automatically).
+6. Review the plan; a qualifying static-only site can use the free tier subject to DigitalOcean's current limits. Deploy.
+7. Open the temporary `*.ondigitalocean.app` URL and test on desktop and mobile.
+8. In the app Settings > Domains > Add Domain, enter the purchased Montana Sky domain. Follow the exact DNS values given by DigitalOcean. Do not guess IPs or CNAME records. Let DigitalOcean provision HTTPS.
+9. When booking links, contacts and policies are verified, set the final domain as primary and verify all buttons again.
+10. Later edits: commit your changed `public/index.html` to your repository; with Autodeploy enabled, DigitalOcean publishes the change.
+
+Official DigitalOcean documentation:
+- https://docs.digitalocean.com/products/app-platform/getting-started/quickstart/
+- https://docs.digitalocean.com/products/app-platform/how-to/manage-static-sites/
+- https://docs.digitalocean.com/products/app-platform/how-to/manage-domains/
+- https://docs.digitalocean.com/products/app-platform/details/pricing/
+
+## E. Alternative — Existing DigitalOcean Ubuntu/Nginx Droplet
+
+**Only use this route if you already administer a secure Nginx server.** Do not modify another site's Nginx configuration or DNS records without verifying the current setup. Replace `YOUR_DOMAIN` and `YOUR_SERVER_IP` with values you actually own. The domain examples below are placeholders.
+
+1. Point A records at your DNS host for your chosen domain and (if desired) `www` to your Droplet's public IP. If using Cloudflare, coordinate the proxy/SSL mode with the actual origin certificate.
+2. SSH to your existing Droplet with your authorized account. Create a new separate web directory:
+
+   `sudo mkdir -p /var/www/montana-sky/public`
+
+3. Upload all CONTENTS of `public/` to `/var/www/montana-sky/public/` using an SFTP application, or `scp`. Ensure Nginx can read files, e.g. directory permissions 755 and files 644.
+4. Create a new site config under `/etc/nginx/sites-available/YOUR_DOMAIN`, containing:
+
+   ```nginx
+   server {
+       listen 80;
+       listen [::]:80;
+       server_name YOUR_DOMAIN www.YOUR_DOMAIN;
+       root /var/www/montana-sky/public;
+       index index.html;
+       location / { try_files $uri $uri/ =404; }
+   }
+   ```
+
+5. Enable the site and safely reload (avoid conflicting server names):
+
+   `sudo ln -s /etc/nginx/sites-available/YOUR_DOMAIN /etc/nginx/sites-enabled/YOUR_DOMAIN`
+
+   `sudo nginx -t && sudo systemctl reload nginx`
+
+6. After DNS has propagated and port 80/443 are reachable, install/configure Certbot for your Ubuntu version and issue SSL for both names:
+
+   `sudo certbot --nginx -d YOUR_DOMAIN -d www.YOUR_DOMAIN`
+
+   Run only after you have installed the supported `certbot` package and confirmed existing Nginx SSL arrangements.
+7. Verify HTTPS, www/non-www behavior, booking links, and SSL auto-renewal. Protect your site's normal backups and security updates.
+
+Official DigitalOcean guides:
+- https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04
+- https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-22-04
+
+## F. What to confirm before launch
+
+Read `PRELAUNCH-CHECKLIST.md` in this package. In particular, **do not copy cancellation periods from Sky's the Limit without confirmation**: as of review, its FAQ and Terms pages display conflicting cancellation windows.
+
+## G. Suggested verification
+
+- Book/test 1 shared seat, 4 shared seats, and 10 shared seats (verify correct $299 x passenger count and departure policy).
+- Test private quantities 1, 5, 6, 8, 9, 10; expected prices: $2000, $2000, $3100, $3100, $3700, $3700.
+- Test all 4 time/style combinations and both mobile and desktop.
+- Confirm shared and private inventory cannot sell the same 10-passenger capacity simultaneously.
+- Confirm booking confirmation, waiver, meeting directions, transaction/deposit and cancellations behave as approved.
+- Do not process a real payment as a test unless approved; use the PonoRez/processor test mode where available.
+- Verify a custom-domain HTTPS certificate before directing live customers to this website.

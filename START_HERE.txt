@@ -1,0 +1,44 @@
+MONTANA SKY — WEBSITE FILES (REISSUED)
+======================================
+
+FIRST CHOICE: Just want to preview the website?
+Open MontanaSky_OnePage_SelfContained.html in Chrome or another browser.
+This single HTML file embeds its own logo, CSS, and JavaScript.
+
+SECOND CHOICE: Ready to host on DigitalOcean?
+Use the public/ folder, which contains index.html and its assets.
+For DigitalOcean App Platform set the component to STATIC SITE and
+specify the output directory: public
+
+BEFORE YOU PUBLISH:
+1. Edit public/index.html (or the self-contained HTML) with a plain-text editor.
+2. Find const BOOKING_URLS and insert the actual Montana Sky PonoRez EZ-Forms links.
+3. Find const BUSINESS_CONTACT and enter your actual company email and phone.
+4. Confirm meeting area, operator-approved flight conditions, and cancellation policies.
+5. Check shared/private booking inventory, 4-person shared minimum per departure,
+   maximum 10 per trip, and the three private pricing brackets in PonoRez itself.
+6. Test checkout and confirmation emails before allowing guests to book.
+
+FARES BUILT INTO THE WEBSITE:
+Shared Morning or Sunset: $299 per person.
+Private Morning or Sunset: 1–5 guests $2,000; 6–8 $3,100; 9–10 $3,700.
+These are website display estimates only; PonoRez must independently enforce prices.
+
+REQUIRED FILES INCLUDED:
+  public/index.html
+  public/assets/montana-sky-logo.png
+  public/assets/montana-sky-logo.webp
+  public/assets/favicon.svg
+  MontanaSky_OnePage_SelfContained.html
+  Website_Setup_Guide.txt
+  Launch_Checklist.txt
+  Homepage_Preview.png
+
+This website is an UNPUBLISHED TEMPLATE. It is not yet connected to the actual
+PonoRez booking links, Montana Sky's contact details, or approved policies.
+
+TROUBLE OPENING FILES?
+Extract this ZIP to a folder first. In Windows, right-click the ZIP and choose
+'Extract All', then double-click the HTML. If HTML shows raw code rather than
+rendering a site, right-click > Open with > Chrome or Edge.
+For Mac, double-click the ZIP to extract, then open the HTML with Safari/Chrome.

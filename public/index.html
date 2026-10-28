@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#102b50">
+  <meta name="description" content="Experience Montana from a new perspective. Shared morning and sunset hot-air balloon trips from $299 per person, plus private balloon flights for 1–10 guests.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Montana Sky | Hot Air Balloon Tours">
+  <meta property="og:description" content="Morning and sunset balloon adventures. Shared flights for $299 per person; private flights for groups of up to 10.">
+  <meta property="og:image" content="assets/montana-sky-logo.png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <title>Montana Sky | Morning & Sunset Hot Air Balloon Tours</title>
+  <style>
+    :root {
+      --navy:#102b50;--deep:#0c233f;--blue:#347db3;--sky:#87bed9;
+      --forest:#1b4c55;--green:#145e51;--gold:#d58a26;--sun:#f9ae24;
+      --cream:#fcfaf5;--paper:#fff;--sand:#f0ebdf;--line:#e5e9e9;
+      --text:#173146;--muted:#526777;--shadow:0 18px 55px rgba(12,35,63,.11);
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:100px}
+    body{margin:0;background:var(--cream);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--text)}
+    img{display:block;max-width:100%}
+    a{color:inherit}
+    button,select{font:inherit}
+    button,select,a{touch-action:manipulation}
+    :focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+    .skip{position:absolute;left:-9999px;top:8px;padding:10px 15px;background:#fff;z-index:99}
+    .skip:focus{left:8px}
+    .wrap{width:min(1150px,calc(100% - 44px));margin:0 auto}
+    .kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:850;color:var(--green)}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:500;letter-spacing:-.045em;line-height:1.08}
+    h1{font-size:clamp(45px,6.1vw,81px);margin:12px 0 22px}
+    h2{font-size:clamp(36px,4vw,54px);margin:12px 0 20px}
+    h3{line-height:1.2}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:14px 23px;border-radius:999px;border:1px solid transparent;text-decoration:none;font-weight:800;font-size:14px;transition:transform .16s,background .16s,box-shadow .16s;cursor:pointer;white-space:nowrap}
+    .btn:hover{transform:translateY(-2px)}
+    .btn:active{transform:translateY(0)}
+    .btn.primary{background:var(--navy);color:#fff;box-shadow:0 9px 21px rgba(16,43,80,.19)}
+    .btn.primary:hover{background:#1e4778}
+    .btn.light{background:#fff;color:var(--navy);border-color:#d6dde0}
+    .btn.gold{background:var(--sun);color:#172c43;box-shadow:0 8px 18px rgba(249,174,36,.23)}
+    .btn.gold:hover{background:#ffc24d}
+    .btn.arrow::after{content:"↗";font-size:17px;font-weight:500}
+    .top{background:#fff;border-bottom:1px solid #e8e9e9;position:sticky;top:0;z-index:50;box-shadow:0 2px 15px rgba(16,43,80,.04)}
+    .topin{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0}
+    .brand-mark{width:38px;height:38px;background:var(--navy);border-radius:13px;display:grid;place-items:center;color:#fff}
+    .brand-name{display:block;font:bold 22px/1 Georgia,"Times New Roman",serif;letter-spacing:-.04em;color:var(--navy)}
+    .brand-sub{font-size:9px;letter-spacing:.24em;color:var(--muted);font-weight:800}
+    .nav{display:flex;align-items:center;gap:25px}
+    .nav>a:not(.btn){font-size:13px;text-decoration:none;color:#375066;font-weight:730}
+    .nav>a:not(.btn):hover{color:var(--blue)}
+    .nav .btn{padding:11px 20px}
+    .hero{position:relative;overflow:hidden;background:linear-gradient(140deg,#fff 0%,#fffcf4 52%,#eaf2f6 100%)}
+    .hero:before{content:"";position:absolute;width:400px;height:400px;border:1px solid rgba(213,138,38,.11);border-radius:50%;top:-275px;left:-140px}
+    .hero-layout{min-height:655px;display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:36px;padding:62px 0 66px}
+    .hero-copy{position:relative;z-index:2}
+    .hero-logo{width:min(380px,100%);height:auto;margin:0 0 10px -7px;mix-blend-mode:multiply}
+    .hero h1{margin-top:12px}
+    .hero h1 em{color:var(--blue);font-style:normal}
+    .lead{max-width:570px;font-size:18px;line-height:1.75;color:#4b6373;margin-bottom:24px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:11px;align-items:center}
+    .hero-details{display:flex;flex-wrap:wrap;gap:13px 22px;margin-top:28px;font-weight:750;font-size:12px;color:#466071}
+    .hero-details span:before{content:"✦";color:var(--gold);padding-right:7px}
+    .hero-art{position:relative;align-self:stretch;min-height:480px;border-radius:250px 250px 36px 36px;overflow:hidden;background:#dfeef0;box-shadow:0 28px 55px rgba(17,58,88,.16)}
+    .hero-art svg{height:100%;width:100%;position:absolute;inset:0}
+    .hero-art .seal{position:absolute;z-index:2;bottom:24px;left:24px;right:24px;padding:15px 20px;border-radius:16px;background:rgba(255,255,255,.87);backdrop-filter:blur(8px);box-shadow:0 5px 15px rgba(16,43,80,.1);display:flex;justify-content:space-between;align-items:center;gap:18px}
+    .seal span{font-family:Georgia,serif;font-size:20px;font-style:italic;color:var(--navy)}
+    .seal b{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#496578;white-space:nowrap}
+    .trust{background:var(--navy);color:#fff}
+    .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);align-items:center;gap:24px;padding:23px 0}
+    .trust-item{display:flex;align-items:center;gap:12px;font-size:13px;font-weight:770}
+    .trust-item svg{flex-shrink:0;color:#ffcb77}
+    .section{padding:94px 0}
+    .section-heading{max-width:690px;margin:0 auto 34px;text-align:center}
+    .section-heading p:not(.kicker){color:var(--muted);font-size:16px;line-height:1.7}
+    .experiences{background:#fff}
+    .flight-grid{display:grid;grid-template-columns:1fr 1fr;gap:23px}
+    .flight-card{border-radius:25px;overflow:hidden;background:#fbfcfe;border:1px solid #e5e9ee;box-shadow:0 6px 30px rgba(16,43,80,.035)}
+    .flight-art{height:225px;position:relative;overflow:hidden}
+    .flight-card.morning .flight-art{background:linear-gradient(145deg,#a6d9ee,#e7f7f2 48%,#fce7b1 88%)}
+    .flight-card.sunset .flight-art{background:linear-gradient(135deg,#193961 0%,#a75c65 42%,#fdab62 82%,#f7d492 100%)}
+    .flight-art svg{position:absolute;width:100%;height:100%}
+    .time-tag{position:absolute;top:20px;left:20px;border-radius:100px;padding:8px 15px;background:rgba(255,255,255,.88);font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.09em;color:var(--navy)}
+    .flight-body{padding:29px 30px 30px}
+    .flight-body h3{font:500 34px/1.1 Georgia,serif;letter-spacing:-.03em;margin-bottom:11px}
+    .flight-body p{color:var(--muted);max-width:470px;margin-bottom:21px}
+    .rate-row{display:flex;flex-wrap:wrap;gap:15px 20px;align-items:center;justify-content:space-between}
+    .flight-price{font-weight:800;color:var(--navy);font-size:14px}
+    .flight-price small{display:block;font-size:12px;color:var(--muted);font-weight:500}
+    .price-section{background:linear-gradient(180deg,#f7f3ec,#fff 94%)}
+    .price-grid{display:grid;grid-template-columns:.87fr 1.13fr;gap:22px;align-items:stretch}
+    .price-card{background:#fff;border:1px solid #e9e6e1;border-radius:24px;padding:34px;box-shadow:0 10px 35px rgba(20,45,70,.035)}
+    .price-card h3{font:500 31px/1.15 Georgia,serif;margin:0 0 10px}
+    .price-card p{color:var(--muted);font-size:14px}
+    .bigprice{font-size:57px;line-height:1.1;font-weight:780;letter-spacing:-.055em;color:var(--navy);margin:26px 0 6px}
+    .bigprice span{font-size:16px;letter-spacing:0;color:var(--muted);font-weight:550}
+    .subnote{font-size:12px;color:var(--muted)}
+    .tier{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:19px 0;border-bottom:1px solid #ecebe7}
+    .tier:first-of-type{margin-top:14px}
+    .tier:last-of-type{border:0}
+    .tier span{font-size:15px;font-weight:710}
+    .tier strong{font-size:25px;letter-spacing:-.03em;color:var(--navy)}
+    .soft-pill{display:inline-block;margin-top:19px;color:var(--forest);background:#e7f3ed;border-radius:100px;padding:8px 13px;font-size:12px;font-weight:720}
+    .booking{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+    .booking:before{content:"";width:620px;height:620px;position:absolute;right:-210px;top:-260px;border:1px solid rgba(255,255,255,.11);border-radius:50%;pointer-events:none}
+    .booking-layout{display:grid;grid-template-columns:.83fr 1.17fr;gap:65px;align-items:center}
+    .booking h2{color:#fff}
+    .booking .kicker{color:#f6c884}
+    .booking .intro{font-size:17px;line-height:1.8;color:#c6d7e4}
+    .booking-list{padding:0;margin:29px 0;list-style:none}
+    .booking-list li{display:flex;gap:12px;color:#e1eaf0;margin-bottom:13px;font-size:13px}
+    .booking-list li::before{content:"✓";display:grid;place-items:center;flex:none;background:#235574;border-radius:50%;width:23px;height:23px;color:#ffd28b;font-size:12px;font-weight:bold}
+    .booking-widget{background:#fff;border-radius:25px;color:var(--text);padding:34px;box-shadow:0 23px 60px rgba(2,12,24,.25)}
+    .booking-widget h3{font:500 30px Georgia,serif;color:var(--navy);margin-bottom:7px}
+    .booking-widget .small{font-size:13px;color:var(--muted);margin-bottom:24px}
+    .fieldlabel{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:820;color:var(--navy);margin-bottom:10px}
+    .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+    .choice{position:relative;display:block}
+    .choice input{position:absolute;opacity:0;width:1px;height:1px}
+    .choice span{display:block;border:1px solid #dae1e5;padding:15px;border-radius:13px;font-size:14px;font-weight:720;color:#486072;text-align:center;cursor:pointer}
+    .choice input:checked+span{background:#eef5fa;border-color:var(--blue);color:var(--navy);box-shadow:inset 0 0 0 1px var(--blue)}
+    .choice input:focus-visible+span{outline:3px solid var(--gold);outline-offset:3px}
+    .guest-select{display:block;width:100%;height:50px;border:1px solid #d8e2e7;background:#fff;border-radius:12px;color:var(--text);padding:0 14px;margin-bottom:25px}
+    .total-panel{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-top:1px solid #e2e8ed;padding-top:22px;margin-bottom:15px}
+    .total-panel .tlabel{display:block;font-size:12px;font-weight:700;color:#71828c}
+    .total-panel .tcaption{display:block;font-size:12px;color:var(--muted)}
+    .total-number{font-size:39px;font-weight:850;letter-spacing:-.055em;color:var(--navy);line-height:1}
+    .booking-widget .btn{width:100%;margin:8px 0 10px}
+    .fineprint{font-size:11px;color:var(--muted);line-height:1.65;margin:9px 0 0}
+    .form-status{border-radius:10px;background:#fff4de;color:#624314;border:1px solid #ebcc88;font-size:12px;line-height:1.6;padding:12px;margin-top:10px}
+    .form-status[hidden]{display:none}
+    .tip-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .tip-card{padding:27px;background:#fff;border:1px solid #e5e8e5;border-radius:20px;min-height:215px}
+    .tip-icon{display:grid;place-items:center;font-size:22px;width:46px;height:46px;background:#eaf3f0;color:var(--forest);border-radius:13px;margin-bottom:21px}
+    .tip-card h3{font-size:18px;margin-bottom:9px;color:var(--navy)}
+    .tip-card p{color:var(--muted);font-size:14px;margin:0}
+    .faq-section{padding-top:10px}
+    .faq-layout{display:grid;grid-template-columns:.7fr 1.3fr;gap:54px;align-items:start}
+    .faq-list{border-top:1px solid #d9e0e2}
+    .faq-list details{border-bottom:1px solid #d9e0e2;padding:2px 0}
+    .faq-list summary{cursor:pointer;list-style:none;position:relative;padding:20px 40px 20px 0;font-weight:760;color:var(--navy)}
+    .faq-list summary::-webkit-details-marker{display:none}
+    .faq-list summary::after{content:"+";position:absolute;right:10px;top:18px;font-size:24px;font-weight:400;color:var(--blue)}
+    .faq-list details[open] summary::after{content:"−"}
+    .faq-list p{margin:0 25px 20px 0;color:var(--muted);font-size:14px;line-height:1.75}
+    .contact-panel{background:#e8f1f3;margin-top:38px;border-radius:23px;padding:31px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+    .contact-panel h3{font:500 28px/1.15 Georgia,serif;color:var(--navy);margin:0 0 6px}
+    .contact-panel p{margin:0;color:#4a6474;font-size:14px}
+    #contactMethods{display:flex;gap:9px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
+    .pending-contact{color:#577485;font-size:13px;max-width:290px;text-align:right}
+    .footer{background:#0c223d;color:#e2ebef;padding:49px 0 29px}
+    .foot-top{display:flex;justify-content:space-between;gap:32px;align-items:center;padding-bottom:31px;border-bottom:1px solid rgba(255,255,255,.15)}
+    .footer .brand-name{color:#fff}
+    .footer .brand-sub{color:#b6ccd9}
+    .foot-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding-top:21px;font-size:12px;color:#afc2cf}
+    .footer a:not(.brand){text-decoration:underline;text-underline-offset:3px}
+    @media(max-width:980px){
+      .hero-layout{gap:24px}.hero-art{min-height:435px}.booking-layout{gap:32px}.hero-logo{width:320px}
+    }
+    @media(max-width:760px){
+      .wrap{width:min(100% - 30px,600px)}
+      .topin{min-height:70px}.nav{gap:12px}.nav>a:not(.btn){display:none}.nav .btn{padding:11px 16px;font-size:12px}
+      .brand-name{font-size:19px}.brand-sub{font-size:8px}.brand-mark{width:33px;height:33px}
+      .hero-layout{grid-template-columns:1fr;padding:35px 0 37px;gap:26px;min-height:auto}
+      .hero-logo{width:min(320px,87vw);margin-bottom:0}
+      .hero-art{min-height:390px;max-height:500px}
+      .hero h1{font-size:clamp(44px,11vw,61px)}.lead{font-size:16px}
+      .hero-details{gap:10px 13px}
+      .trust-grid{grid-template-columns:1fr;gap:12px;padding:20px 0}
+      .section{padding:68px 0}.flight-grid,.price-grid,.booking-layout,.faq-layout{grid-template-columns:1fr}
+      .flight-art{height:190px}.flight-body{padding:25px}.price-card{padding:26px}
+      .booking-layout{gap:22px}.booking-widget{padding:25px}
+      .tip-grid{grid-template-columns:1fr}.tip-card{min-height:0}
+      .faq-section{padding-top:12px}
+      .contact-panel,.foot-top{flex-direction:column;align-items:flex-start}
+      #contactMethods{justify-content:flex-start}.pending-contact{text-align:left}
+      .foot-bottom{align-items:flex-start}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap topin">
+    <a class="brand" href="#top" aria-label="Montana Sky home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="25" height="25" viewBox="0 0 44 44" fill="none"><path d="M22 3C9 3 6 13 8 22c2 9 9 13 14 18 5-5 12-9 14-18C38 13 35 3 22 3Z" fill="#F7B131"/><path d="M22 3C13 3 10 15 13 25c2 5 5 9 9 15V3Z" fill="#B32945"/><path d="M22 3C30 3 34 14 31 25c-2 6-5 10-9 15V3Z" fill="#3A83B6"/><path d="M22 40v2" stroke="white" stroke-width="2"/></svg>
+      </span>
+      <span><span class="brand-name">Montana Sky</span><span class="brand-sub">BALLOON TOURS</span></span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#experiences">Flights</a><a href="#pricing">Pricing</a><a href="#faq">FAQs</a>
+      <a class="btn primary" href="#reserve">Reserve a flight <span aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section id="top" class="hero" aria-labelledby="hero-title">
+  <div class="wrap hero-layout">
+    <div class="hero-copy">
+      <img class="hero-logo" src="assets/montana-sky-logo.webp" width="572" height="352" alt="Montana Sky Balloon Tours — mountain skyline and multicolor hot-air balloon" fetchpriority="high">
+      <div class="kicker">Big skies. Unforgettable moments.</div>
+      <h1 id="hero-title">See Montana in a <em>whole new light.</em></h1>
+      <p class="lead">The mountains, the open prairie, the extraordinary quiet. Experience it all from a hot-air balloon on a morning or sunset flight — shared with new friends or reserved just for your group.</p>
+      <div class="hero-actions"><a class="btn primary arrow" href="#reserve">Find your flight</a><a class="btn light" href="#experiences">Explore experiences</a></div>
+      <div class="hero-details"><span>Morning &amp; sunset</span><span>Shared &amp; private flights</span><span>Up to 10 guests</span></div>
+    </div>
+    <div class="hero-art" role="img" aria-label="Illustration of a multicolored balloon floating over Montana mountains and golden prairie at sunrise">
+      <svg viewBox="0 0 540 640" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="theSky" x1=".1" y1="0" x2=".7" y2="1"><stop stop-color="#8fc9e3"/><stop offset=".53" stop-color="#faead3"/><stop offset="1" stop-color="#f8c38a"/></linearGradient><linearGradient id="prairie" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#d7ad60"/><stop offset="1" stop-color="#916a35"/></linearGradient><linearGradient id="envelope" x1="0" y1="0" x2="1" y2=".4"><stop stop-color="#ffe2a4"/><stop offset="1" stop-color="#9b4e4e"/></linearGradient></defs>
+        <rect width="540" height="640" fill="url(#theSky)"/>
+        <circle cx="122" cy="175" r="95" fill="#fff7df" opacity=".8"/><circle cx="122" cy="175" r="129" fill="none" stroke="#fff7df" opacity=".46"/>
+        <g fill="#fff" opacity=".48"><ellipse cx="392" cy="119" rx="64" ry="12"/><ellipse cx="434" cy="126" rx="84" ry="12"/><ellipse cx="97" cy="85" rx="36" ry="6"/></g>
+        <path d="M0 381 65 336 113 349 171 282 220 319 268 237 349 328 390 299 433 330 481 290 540 336V640H0Z" fill="#9bb9c0"/>
+        <path d="M0 410 51 383 95 388 179 310 235 350 275 271 351 371 405 333 463 355 522 322 540 327V640H0Z" fill="#456d7b"/>
+        <path d="m148 341 31-31 28 25-18-7-10-9-17 22zm106-38 21-32 40 50-25-17-15-16-12 25z" fill="#f1f5ed"/>
+        <path d="M0 434Q135 398 280 443T540 409V640H0Z" fill="#749275"/>
+        <path d="M0 489Q140 449 246 468T540 460V640H0Z" fill="#c9ab63"/>
+        <path d="M0 536Q134 495 260 516T540 486V640H0Z" fill="url(#prairie)"/>
+        <path d="M0 563Q170 528 330 557T540 538v102H0Z" fill="#b78843"/>
+        <g opacity=".55" stroke="#e5c88b" stroke-width="5" fill="none"><path d="M-20 562Q190 513 560 547"/><path d="M-30 590Q190 551 550 577"/><path d="M-40 625Q190 592 560 610"/></g>
+        <g fill="#284e50"><path d="m42 465 15-49 15 49zm-14 7 17-70 20 70zm78-12 17-70 17 70zm-17 7 21-93 24 93zm344-7 15-47 15 47zm-20 11 24-86 25 86z"/></g>
+        <g transform="translate(331 104)">
+          <path d="M87 5C17 5-8 53 7 109c12 48 51 85 80 109 29-24 69-61 81-109C182 53 157 5 87 5Z" fill="#15365c" stroke="#133451" stroke-width="5"/>
+          <path d="M87 8C47 8 30 57 36 105c5 42 24 76 51 111Z" fill="#cb394c"/><path d="M87 8C64 8 57 54 63 103c5 47 13 83 24 113Z" fill="#f09a2d"/><path d="M87 8C105 8 118 61 111 114c-7 50-17 78-24 102Z" fill="#fbd35c"/><path d="M87 8C133 13 145 65 136 109c-8 40-24 77-49 107Z" fill="#167667"/><path d="M87 8C151 11 178 58 164 110c-11 43-47 84-77 106Z" fill="#3978ae" opacity=".7"/>
+          <path d="M7 110Q86 142 168 110" stroke="#fbe8c0" stroke-width="4" fill="none"/>
+          <path d="m62 207 11 25m39-25-12 25" stroke="#2a3c46" stroke-width="3"/><path d="M64 230h46l-6 24H70Z" fill="#57422d"/><path d="M64 236h46" stroke="#b28e60" stroke-width="4"/>
+        </g>
+      </svg>
+      <div class="seal"><span>There’s more to the view.</span><b>Montana Sky</b></div>
+    </div>
+  </div>
+</section>
+<div class="trust"><div class="wrap trust-grid">
+  <div class="trust-item"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="8"/><path d="M12 3v4m0 10v4M3 12h4m10 0h4"/></svg> Two ways to experience the sky</div>
+  <div class="trust-item"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 18 9 8l4 6 3-4 4 8Z"/><path d="M8 18 12 4l4 14"/></svg> Mountains, open country &amp; wide horizons</div>
+  <div class="trust-item"><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2v4m0 12v4M4.9 4.9l2.8 2.8m8.6 8.6 2.8 2.8M2 12h4m12 0h4M4.9 19.1l2.8-2.8m8.6-8.6 2.8-2.8"/><circle cx="12" cy="12" r="4"/></svg> All flights weather dependent</div>
+</div></div>
+<section class="section experiences" id="experiences">
+  <div class="wrap"><div class="section-heading"><div class="kicker">The experiences</div><h2>Choose your kind of wonder.</h2><p>Early light or evening glow. A shared adventure or a balloon to yourselves. There’s a Montana Sky experience for the moment you want to remember.</p></div>
+  <div class="flight-grid">
+    <article class="flight-card morning"><div class="flight-art">
+      <span class="time-tag">First light</span>
+      <svg viewBox="0 0 540 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="412" cy="89" r="50" fill="#fff4ca"/><path d="M0 165 72 107 110 132 169 77 239 146 291 89 344 145 405 114 468 153 540 112v108H0Z" fill="#88b8c7"/><path d="M0 195 75 142 128 159 169 110 219 146 285 123 352 173 403 139 477 166 540 150v70H0Z" fill="#376a7c"/><path d="M0 197Q202 172 332 194T540 179v50H0Z" fill="#8ca77f"/><path d="M0 215Q200 191 540 210v20H0Z" fill="#d8b46e"/></svg>
+    </div><div class="flight-body"><h3>Morning Flights</h3><p>Welcome the day as the landscape takes on its first golden light. An unforgettable beginning to a Montana morning.</p><div class="rate-row"><div class="flight-price">$299 per shared seat <small>Or reserve a private balloon from $2,000</small></div><button class="btn primary trip-pick arrow" type="button" data-time="morning">Choose morning</button></div></div></article>
+    <article class="flight-card sunset"><div class="flight-art">
+      <span class="time-tag">Golden hour</span>
+      <svg viewBox="0 0 540 220" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="415" cy="120" r="74" fill="#ffcf78" opacity=".86"/><path d="M0 160 70 117 123 144 187 99 246 151 290 121 362 153 424 117 488 153 540 128v92H0Z" fill="#814c69"/><path d="M0 188 59 163 129 177 188 133 247 181 305 156 383 188 450 162 540 176v44H0Z" fill="#243e60"/><path d="M0 197Q150 176 302 197T540 180v40H0Z" fill="#bb785b"/><path d="M0 216Q240 186 540 205v24H0Z" fill="#7a5c5d"/></svg>
+    </div><div class="flight-body"><h3>Sunset Flights</h3><p>Watch the prairie shift into warm evening color. An extraordinary way to celebrate, reconnect, and close the day.</p><div class="rate-row"><div class="flight-price">$299 per shared seat <small>Or reserve a private balloon from $2,000</small></div><button class="btn primary trip-pick arrow" type="button" data-time="sunset">Choose sunset</button></div></div></article>
+  </div></div>
+</section>
+<section class="section price-section" id="pricing">
+  <div class="wrap"><div class="section-heading"><div class="kicker">Simple, transparent fares</div><h2>Pick a seat, or make it all yours.</h2><p>Shared trips and private reservations are offered for both morning and sunset departures.</p></div>
+  <div class="price-grid">
+    <article class="price-card"><div class="kicker">Shared flights</div><h3>Share the view</h3><p>Book one or more seats and join other guests aboard a scheduled flight.</p><div class="bigprice">$299 <span>/ person</span></div><p class="subnote">A shared departure requires a minimum of 4 confirmed passengers total and accommodates no more than 10.</p><span class="soft-pill">Available for morning &amp; sunset</span></article>
+    <article class="price-card"><div class="kicker">Exclusive balloon</div><h3>Private flights</h3><p>Reserve the entire balloon for your group, up to 10 passengers, at a fixed group fare.</p>
+      <div class="tier"><span>1–5 passengers</span><strong>$2,000</strong></div>
+      <div class="tier"><span>6–8 passengers</span><strong>$3,100</strong></div>
+      <div class="tier"><span>9–10 passengers</span><strong>$3,700</strong></div>
+      <span class="soft-pill">Same pricing for morning &amp; sunset</span>
+    </article>
+  </div>
+  </div>
+</section>
+<section class="section booking" id="reserve" aria-labelledby="booking-title">
+  <div class="wrap booking-layout">
+    <div><div class="kicker">Your moment awaits</div><h2 id="booking-title">A little planning. A lot of magic.</h2><p class="intro">Choose your flight, group type, and passenger count. We’ll display your fare and direct you to the corresponding PonoRez reservation form.</p>
+    <ul class="booking-list"><li>Morning or sunset options</li><li>Shared seats or a private flight</li><li>Reservations and payments through PonoRez EZ-Forms</li></ul>
+    <p style="font-size:12px;color:#c3d5e0">This estimate reflects the published base fare. The PonoRez checkout will confirm availability, final charges, and any booking terms.</p></div>
+    <div class="booking-widget"><h3>Plan your flight</h3><p class="small">Find the booking option that fits your group.</p>
+      <fieldset style="border:0;padding:0;margin:0"><legend class="fieldlabel">When would you like to fly?</legend>
+        <div class="choice-grid"><label class="choice"><input type="radio" name="time" value="morning" checked><span>☀ Morning</span></label><label class="choice"><input type="radio" name="time" value="sunset"><span>◐ Sunset</span></label></div>
+      </fieldset>
+      <fieldset style="border:0;padding:0;margin:0"><legend class="fieldlabel">Flight style</legend>
+        <div class="choice-grid"><label class="choice"><input type="radio" name="style" value="shared" checked><span>Shared seats</span></label><label class="choice"><input type="radio" name="style" value="private"><span>Private balloon</span></label></div>
+      </fieldset>
+      <label class="fieldlabel" for="guests">Number of passengers</label>
+      <select id="guests" class="guest-select" name="guests" aria-describedby="bookingSummary"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option><option value="7">7 guests</option><option value="8">8 guests</option><option value="9">9 guests</option><option value="10">10 guests</option></select>
+      <div class="total-panel" aria-live="polite"><div><span class="tlabel">Your flight estimate</span><span class="tcaption" id="bookingSummary">2 shared seats · morning</span></div><output class="total-number" id="total" for="guests">$598</output></div>
+      <a id="bookingLink" class="btn gold arrow" href="#reserve" aria-describedby="bookingHelp">Continue to secure booking</a>
+      <p id="bookingHelp" class="fineprint">Shared departures need 4 confirmed passengers overall, but you may reserve fewer seats in one order. Confirm your guest count and date again in the PonoRez form; this estimator does not prefill checkout. Flights depend on safe weather.</p>
+      <div class="form-status" id="bookingStatus" role="status" hidden>Online booking links have not been added yet. Add the PonoRez EZ-Forms URLs in the <strong>BOOKING_URLS</strong> section near the bottom of this HTML file before going live.</div>
+    </div>
+  </div>
+</section>
+<section class="section" id="prepare">
+  <div class="wrap"><div class="section-heading"><div class="kicker">Before you fly</div><h2>Good to know before you go.</h2><p>Hot-air ballooning is a special kind of adventure. A little preparation helps make the day smoother.</p></div>
+  <div class="tip-grid">
+    <article class="tip-card"><div class="tip-icon" aria-hidden="true">☀</div><h3>Weather comes first</h3><p>Balloon flights depend on suitable weather and the pilot's safety decision. If conditions change, the operator will contact booked guests about next steps.</p></article>
+    <article class="tip-card"><div class="tip-icon" aria-hidden="true">♢</div><h3>Dress for the outdoors</h3><p>Comfortable layers and closed-toe shoes are a sensible choice for a morning or evening outdoor experience.</p></article>
+    <article class="tip-card"><div class="tip-icon" aria-hidden="true">⌖</div><h3>Check your flight details</h3><p>Review your reservation information for the exact meeting point, check-in instructions, any waiver, and passenger requirements.</p></article>
+  </div></div>
+</section>
+<section class="section faq-section" id="faq">
+  <div class="wrap"><div class="faq-layout"><div><div class="kicker">Questions answered</div><h2>Everything starts with a little curiosity.</h2><p style="color:var(--muted)">For specific operating restrictions and cancellations, review the final policies displayed in the booking form.</p></div>
+    <div class="faq-list">
+      <details><summary>Can I book just one or two seats on a shared flight?</summary><p>Yes. Shared flights are priced per seat. The flight itself requires at least four confirmed passengers in total and accommodates up to ten. If the overall departure does not reach the minimum, the operator will advise you of options under its published policy.</p></details>
+      <details><summary>What does a private flight cost?</summary><p>Private flights are charged per group: $2,000 for one to five guests, $3,100 for six to eight, or $3,700 for nine to ten. The same fares apply to morning and sunset flights.</p></details>
+      <details><summary>When and where do we meet?</summary><p>Departure timing varies with the season and flying conditions. The final meeting location and arrival instructions should be confirmed in your reservation details before your trip.</p></details>
+      <details><summary>What happens if the weather does not cooperate?</summary><p>The pilot decides whether it is safe to fly. If a trip cannot operate, Montana Sky will communicate the options defined in its approved weather and rescheduling policy. Please review the terms at checkout.</p></details>
+      <details><summary>Are there age, weight, or health requirements?</summary><p>Passenger eligibility and accommodations depend on the balloon and operating conditions. Please check the final booking terms or contact the operator before purchasing if you have questions about age, weight, mobility, pregnancy, or a health concern.</p></details>
+      <details><summary>What is the cancellation policy?</summary><p>Cancellation periods and any applicable credits or refund terms will be provided in Montana Sky’s booking conditions. Please review them before completing your reservation.</p></details>
+    </div>
+  </div>
+  <div class="contact-panel"><div><h3>Have a group or flight question?</h3><p>We’re happy to help you find the right experience.</p></div><div id="contactMethods"><span class="pending-contact">Contact email and phone will appear here once added to the website settings.</span></div></div>
+  </div>
+</section>
+</main>
+<footer class="footer"><div class="wrap"><div class="foot-top"><a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">✦</span><span><span class="brand-name">Montana Sky</span><span class="brand-sub">BALLOON TOURS</span></span></a><p style="max-width:460px;margin:0;color:#c4d5e0;font-size:14px">Inspired by the wide-open beauty of Montana. Shared and private hot-air balloon experiences, subject to weather and operating conditions.</p></div>
+<div class="foot-bottom"><span>© <span id="year">2026</span> Montana Sky Balloon Tours. All rights reserved.</span><span>Reservations powered by PonoRez · <a href="#faq">Flight questions &amp; policies</a></span></div></div></footer>
+<script>
+/* =======================================================================
+   MONTANA SKY — QUICK EDIT CONFIGURATION
+   1. Paste your exact PonoRez EZ-Forms URL in each booking option.
+   2. For a single private form with tiered pricing, set morningPrivate and
+      sunsetPrivate. If private tiers use separate forms, set the six tier
+      specific URLs as well; tier-specific ones take priority.
+   3. Enter your actual business contact details after confirmation.
+   Never use another supplier's PonoRez booking URLs.
+   ======================================================================= */
+const BOOKING_URLS = {
+  morningShared: "",
+  sunsetShared: "",
+  morningPrivate: "",
+  sunsetPrivate: "",
+  morningPrivate1to5: "",
+  morningPrivate6to8: "",
+  morningPrivate9to10: "",
+  sunsetPrivate1to5: "",
+  sunsetPrivate6to8: "",
+  sunsetPrivate9to10: ""
+};
+const BUSINESS_CONTACT = {
+  email: "",  // e.g. reservations@your-actual-domain.com
+  phone: ""   // e.g. +1-406-XXX-XXXX (provide your confirmed phone)
+};
+/* ======================================================================= */
+(function () {
+  "use strict";
+  const money = new Intl.NumberFormat("en-US", {style:"currency",currency:"USD",maximumFractionDigits:0});
+  const timeFields = document.querySelectorAll('input[name="time"]');
+  const styleFields = document.querySelectorAll('input[name="style"]');
+  const guestSelect = document.getElementById("guests");
+  const totalOutput = document.getElementById("total");
+  const summary = document.getElementById("bookingSummary");
+  const link = document.getElementById("bookingLink");
+  const status = document.getElementById("bookingStatus");
+  const reserve = document.getElementById("reserve");
+  const selected = name => document.querySelector('input[name="'+name+'"]:checked').value;
+  const isValidUrl = raw => {
+    try { return new URL(raw).protocol === "https:"; } catch(e) { return false; }
+  };
+  function calculate() {
+    const time = selected("time"), style = selected("style"), people = Number(guestSelect.value);
+    const tier = people <= 5 ? "1to5" : people <= 8 ? "6to8" : "9to10";
+    const price = style === "shared" ? people * 299 : people <= 5 ? 2000 : people <= 8 ? 3100 : 3700;
+    totalOutput.textContent = money.format(price);
+    summary.textContent = people + (people === 1 ? " guest" : " guests") + " · " + (style === "shared" ? "shared seats" : "private flight") + " · " + time;
+    const key = time + (style === "shared" ? "Shared" : "Private");
+    const overrideKey = style === "private" ? key + tier : "";
+    const url = ((overrideKey && isValidUrl(BOOKING_URLS[overrideKey])) ? BOOKING_URLS[overrideKey] : BOOKING_URLS[key]);
+    if (isValidUrl(url)) {
+      link.href = url;
+      link.dataset.configured = "true";
+      status.hidden = true;
+    } else {
+      link.href = "#reserve";
+      link.dataset.configured = "false";
+      status.hidden = true;
+    }
+  }
+  function jumpToBooking(time, style) {
+    document.querySelector('input[name="time"][value="'+time+'"]')?.click();
+    if (style) document.querySelector('input[name="style"][value="'+style+'"]')?.click();
+    calculate();reserve.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+  }
+  timeFields.forEach(el=>el.addEventListener("change",calculate));
+  styleFields.forEach(el=>el.addEventListener("change",calculate));
+  guestSelect.addEventListener("change",calculate);
+  document.querySelectorAll(".trip-pick").forEach(button=>button.addEventListener("click",()=>jumpToBooking(button.dataset.time)));
+  link.addEventListener("click",event=>{
+    if(link.dataset.configured !== "true") {
+      event.preventDefault(); status.hidden = false; status.scrollIntoView({block:"nearest"});
+    }
+  });
+  const methods = document.getElementById("contactMethods");
+  const email = BUSINESS_CONTACT.email.trim(), phone = BUSINESS_CONTACT.phone.trim();
+  if (email || phone) {
+    methods.replaceChildren();
+    if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      const a=document.createElement('a');a.className='btn primary';a.href='mailto:'+email;a.textContent='Email our team';methods.appendChild(a);
+    }
+    if(phone) {
+      const a=document.createElement('a');a.className='btn light';a.href='tel:'+phone.replace(/[^+\d]/g,'');a.textContent=phone;methods.appendChild(a);
+    }
+  }
+  document.getElementById("year").textContent = new Date().getFullYear();
+  calculate();
+})();
+</script>
+</body>
+</html>

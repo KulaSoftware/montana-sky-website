@@ -1,0 +1,29 @@
+# Montana Sky — Prelaunch Approval Checklist
+
+These are **not yet established Montana Sky policies**. Confirm them with the operator and implement consistently in PonoRez and website copy.
+
+- [ ] Registered domain name and primary canonical URL
+- [ ] Montana service area / city / exact meeting location and guest arrival instructions
+- [ ] Montana Sky reservation contact email and telephone
+- [ ] Four direct PonoRez booking links (or eight separate form URLs for three private tiers per time)
+- [ ] Final operating dates and departure/meeting times for morning and sunset (sunset availability depends on location, weather, season and operator)
+- [ ] Shared flights: minimum 4 confirmed passengers for each departure; individual parties of 1–3 may still reserve seats; how to handle unfilled departures
+- [ ] Capacity 10 total and shared/private mutual exclusivity for the same balloon asset and departure
+- [ ] Private fixed booking totals: 1–5 $2,000; 6–8 $3,100; 9–10 $3,700; whether same prices at both times
+- [ ] Taxes, payment gateway charges, booking fees, deposits, and whether charges are included in posted prices
+- [ ] Pilot-approved age, weight, pregnancy, mobility and medical eligibility rules; exact published wording
+- [ ] Liability waiver procedure (PonoRez eWaivers if offered), signed by all required guests
+- [ ] What to bring, clothing, duration, itinerary, optional transportation, and included amenities
+- [ ] One FINAL operator-approved cancellation / refund / rescheduling / no-show policy for shared, large groups, and private charters
+- [ ] Weather-related cancellations and rebooking/refund procedure, including fees/insurance if any
+- [ ] PonoRez payment processor connection and receipt/confirmation email templates
+- [ ] Passenger capacity, manifests, shared/private inventory and owner/crew access
+- [ ] Event measurement (GA4/GTM) and privacy policy if tracking / contact forms added
+- [ ] Domain DNS/HTTPS, accessibility, phone/mobile and all booking buttons tested
+
+## Reference warning
+
+Sky's the Limit Ballooning's FAQ states **48-hour standard / 7-day private** cancellation notices, while its Terms and Conditions page states **72-hour shared / 14-day private** notices. Those do not agree. Do **not** present either as Montana Sky policy until approved.
+
+FAQ: https://www.skysthelimitballooning.com/faq/
+Terms: https://www.skysthelimitballooning.com/terms-and-conditions/
